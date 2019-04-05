@@ -1,0 +1,9 @@
+.certificates
+.env
+.idea
+!.gitkeep
+.vscode
+*.log
+node_modules
+deploy.sh
+

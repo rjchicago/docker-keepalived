@@ -1,0 +1,34 @@
+version: '3.6'
+
+services:
+  keepalived-tether:
+    image: rjchicago/keepalived-tether:${VERSION:-latest}
+    build: ./keepalived-tether
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - KEEPALIVED_IMAGE=rjchicago/keepalived:${VERSION:-latest}
+      - KEEPALIVED_INTERFACE=bond0
+      - KEEPALIVED_VIRTUAL_IPS
+      - DOCKER_NODE_HOSTNAME={{.Node.Hostname}}
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - target: 3000
+        published: 8082
+        protocol: tcp
+        mode: host
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 5s
+  keepalived-float:
+    image: rjchicago/keepalived-float:${VERSION:-latest}
+    build: ./keepalived-float
+    deploy:
+      replicas: 0 # intentionally zero. tether will deploy float.
