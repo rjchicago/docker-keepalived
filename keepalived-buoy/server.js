@@ -23,4 +23,4 @@ app.get('/', (req, res) => res.send({
 
 app.get('/health', (req, res) => res.send('Ok'));
 
-app.listen(port, () => console.log(`host-info listening on port ${port}!`));
+app.listen(port, () => console.log(`keepalived-buoy listening on port ${port}`));

@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y keepalived
 
 RUN useradd keepalived_script && usermod -aG sudo keepalived_script
 
-COPY keepalived_float /
+COPY keepalived-float.sh /
 
-RUN chmod +x /keepalived_float
+RUN chmod +x /keepalived-float.sh
 
-ENTRYPOINT ["/keepalived_float"]
+ENTRYPOINT ["/keepalived-float.sh"]
