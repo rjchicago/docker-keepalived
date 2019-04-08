@@ -1,0 +1,9 @@
+[submodule "keepalived-float"]
+	path = keepalived-float
+	url = git://github.com/rjchicago/keepalived-float
+[submodule "keepalived-anchor"]
+	path = keepalived-anchor
+	url = git://github.com/rjchicago/keepalived-anchor
+[submodule "keepalived-buoy"]
+	path = keepalived-buoy
+	url = git://github.com/rjchicago/keepalived-buoy
