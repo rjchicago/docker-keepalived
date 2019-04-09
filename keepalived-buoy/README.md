@@ -1,12 +1,12 @@
-# Keepalived Buoy
+# Keepalived-Buoy
 
-**Keepalived Buoy** is the "*buoy*" (a.k.a visible entrypoint) into the **Docker Keepalived** setup.
+**Keepalived-Buoy** is the "*buoy*" (a.k.a visible entrypoint) into the <a href="https://github.com/rjchicago/docker-keepalived">**Docker-Keepalived**</a> setup.
 
 The buoy is optional, but it provides simple a means of testing and validating keepalived functionality. For example, you may want to configuring uptime monitoring at the floating IP level (i.e. http://$FLOATING_IP:$EXPOSED_PORT/health). You may also want extend buoy to expose additional operational or debugging information.
 
 ## Service Defintion
 
-Example service definition for **Keepalived Buoy**:
+Example service definition for **Keepalived-Buoy**:
 
 ```
 version: '3.6'
