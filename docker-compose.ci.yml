@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  keepalived-anchor:
+    image: rjchicago/keepalived-anchor:${VERSION:-latest}
+    build:
+      context: keepalived-anchor
+  keepalived-buoy:
+    image: rjchicago/keepalived-buoy:${VERSION:-latest}
+    build:
+      context: keepalived-buoy
+  keepalived-float:
+    image: rjchicago/keepalived-float:${VERSION:-latest}
+    build:
+      context: keepalived-float

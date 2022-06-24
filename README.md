@@ -3,10 +3,12 @@
 
 **Docker-Keepalived** enables you to run **Keepalived** in your Docker Swarm.
 
-### Why would you want to run Keepalived in Docker Swarm?
+## Why would you want to run Keepalived in Docker Swarm?
+
 If you've found this project, chances are that you have your reasons. More than likely, you simply want to avoid an additional load-balancer in front your Swarm. Now, with **Docker-Keepalived**, you can do just that!
 
-### Services in the **Docker-Keepalived** Project:
+## Services in the **Docker-Keepalived** Project
+
 * [**Keepalived-Anchor**](https://github.com/rjchicago/docker-keepalived/tree/master/keepalived-anchor)
   * The Anchor is deployed in global mode with a constraint to only run on managers as it requires execution of docker commands to deploy the Float. The Anchor's primary duty is ensuring the float is created and running at all times.
 * [**Keepalived-Float**](https://github.com/rjchicago/docker-keepalived/tree/master/keepalived-float)
@@ -14,9 +16,22 @@ If you've found this project, chances are that you have your reasons. More than 
 * [**Keepalived-Buoy**](https://github.com/rjchicago/docker-keepalived/tree/master/keepalived-buoy)
   * The Buoy is also deployed in global mode with a constraint to only run on managers to match that of the Anchor. It is the visible layer, exposing health and other operational and debugging information. The Buoy itself is not critical to the system and could optionally be omitted from a deployment.
 
+## Deploy
 
-### Deploy Example
-
+``` sh
+docker stack deploy -c docker-compose.yml keepalived --prune
 ```
-docker stack deploy -c docker-compose.yml keepalived
+
+## Contributing
+
+``` sh
+# build & push $VERSION
+set -o allexport; source .env; set +o allexport
+docker-compose -f docker-compose.ci.yml build
+docker-compose -f docker-compose.ci.yml push
+
+# build & push "latest"
+export VERSION=latest
+docker-compose -f docker-compose.ci.yml build
+docker-compose -f docker-compose.ci.yml push
 ```
